@@ -41,6 +41,6 @@ applications:
 
 Run 
 ```
-cf push testmeteor -b https://github.com/bancha001/bluemix-buildpack-meteor1
+cf push testmeteor -b https://github.com/bancha001/bluemix-buildpack-meteor
 
 ```
