@@ -16,9 +16,9 @@ To run your new app:
    cd testmeteor
    meteor
 ```
-* Run and test the functions in your local until all functions are stistisfied
+* Run and test the application in your local until all functions are stistisfied
 
-* Delete the .meteor/local from testmeteor folder. Otherwise unneccessary files will be upload when you deploy it to bluemix and it will take time to upload.
+* Stop the application then delete the .meteor/local from testmeteor folder. Otherwise unneccessary files will be upload when you deploy it to bluemix and it will take time to upload.
 
 * Create manifest.yml and put it under the testmeteor folder.
 Here is the sample yml.
