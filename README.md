@@ -19,57 +19,19 @@ To run your new app:
    meteor
 ```
 
-Initialize git repository in application's directory.
+Then create manifest.yml and put it under the root folder.
+Here is the sample yml.
 
-```
-$ cd helloworld
-$ git init
-Initialized empty Git repository in /tmp/a/helloworld/.git/
-$ git add .
-$ git commit -m "First commit"
-```
+---
+applications:
+- memory: 1GB
+  domain: mybluemix.net
+  path: .
+  buildpack: https://github.com/bancha001/bluemix-buildpack-meteor1
+  host: lbv4
+  name: lbv4
+  disk: 512M
+  services:
+    - MongoLab-4d
+  instances: 1
 
-Create Heroku application
-
-```
-$ heroku create <unique_app_name> --stack cedar --buildpack https://github.com/jagi/heroku-buildpack-meteor.git
-```
-
-Set ROOT_URL variable
-
-```
-$ heroku config:set ROOT_URL=http://<unique_app_name>.herokuapp.com
-```
-
-Add MongoHQ
-
-```
-$ heroku addons:add mongohq
-```
-
-Deploy application to Heroku server
-
-```
-$ git push heroku master
-```
-
-Enjoy!
-
-## Additional notes
-
-1. The `.meteor` directory doesn't have to be located in the root directory of the Git repository. This buildpack tries to find `.meteor` directory and use the first found location to build application. For instance, you can use following directories structure:
-```
-/.git/
-/.gitignore
-/web/.meteor
-/web/app.css
-/web/app.html
-/web/app.js
-/android/
-/ios/
-```
-
-2. If you want to deploy (`git push`) non `master` local branch to Heroku server use the following command:
-```
-$ git push heroku <local_branch_name>:master
-```
