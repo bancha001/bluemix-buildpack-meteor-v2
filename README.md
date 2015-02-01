@@ -18,7 +18,7 @@ To run your new app:
 ```
 * Run and test the application in your local until all functions are stistisfied
 
-* Stop the application then delete the .meteor/local from testmeteor folder. Otherwise unneccessary files will be upload when you deploy it to bluemix and it will take time to upload.
+* Stop the application then delete the .meteor/local from testmeteor folder. Otherwise unneccessary files will be uploaded when you deploy it to bluemix and it will take longer time to upload.
 
 * Create manifest.yml and put it under the testmeteor folder.
 Here is the sample yml.
@@ -28,7 +28,7 @@ applications:
 - memory: 1GB
   domain: mybluemix.net
   path: .
-  buildpack: https://github.com/bancha001/bluemix-buildpack-meteor1
+  buildpack: https://github.com/bancha001/bluemix-buildpack-meteor
   host: testmeteor
   name: testmeteor
   disk: 512M
@@ -37,9 +37,9 @@ applications:
   instances: 1
 ```
 
-* In .meteor folder, open the platforms file then remove the ios and android entries (if there exist)
+* In .meteor folder, open the platforms file under the testmeteor folder  then remove the ios and android entries (if there exist)
 
-Run 
+* Run 
 ```
 cf push testmeteor -b https://github.com/bancha001/bluemix-buildpack-meteor
 
