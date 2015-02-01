@@ -37,7 +37,7 @@ applications:
   instances: 1
 ```
 
-* In .meteor folder, open the platforms file under the testmeteor folder  then remove the ios and android entries (if there exist)
+* In testmeteor/.meteor folder, open the platforms file then remove the ios and android entries (if there exist)
 
 * Run 
 ```
