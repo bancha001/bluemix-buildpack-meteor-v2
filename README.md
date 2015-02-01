@@ -19,9 +19,9 @@ To run your new app:
    meteor
 ```
 
-Then create manifest.yml and put it under the root folder.
+Create manifest.yml and put it under the application root folder.
 Here is the sample yml.
-
+```
 ---
 applications:
 - memory: 1GB
@@ -34,4 +34,6 @@ applications:
   services:
     - MongoLab-4d
   instances: 1
+```
 
+In .meteor folder, open the platforms file then remove the ios and android entries
