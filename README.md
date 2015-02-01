@@ -6,7 +6,7 @@ This buildpack is dedicated for use with Meteor 1.0+.
 
 ## Usage
 
-Create Meteor application
+* Create Meteor application
 
 ```
 $ meteor create testmeteor
@@ -16,11 +16,11 @@ To run your new app:
    cd testmeteor
    meteor
 ```
-Run and test the functions in your local until all functions are stistisfied
+* Run and test the functions in your local until all functions are stistisfied
 
-Delete the .meteor/local from testmeteor folder. Otherwise unneccessary files will be upload when you deploy it to bluemix and it will take time to upload.
+* Delete the .meteor/local from testmeteor folder. Otherwise unneccessary files will be upload when you deploy it to bluemix and it will take time to upload.
 
-Create manifest.yml and put it under the testmeteor folder.
+* Create manifest.yml and put it under the testmeteor folder.
 Here is the sample yml.
 ```
 ---
@@ -37,7 +37,7 @@ applications:
   instances: 1
 ```
 
-In .meteor folder, open the platforms file then remove the ios and android entries
+* In .meteor folder, open the platforms file then remove the ios and android entries (if there exist)
 Run 
 ```
 cf push testmeteor -b https://github.com/bancha001/bluemix-buildpack-meteor1
