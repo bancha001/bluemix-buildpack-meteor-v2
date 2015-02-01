@@ -1,4 +1,4 @@
-# Heroku buildpack for Meteor
+# Bluemix buildpack for Meteor
 
 ## Supported version
 
@@ -10,7 +10,7 @@ This buildpack is dedicated for use with Meteor 1.0+.
 
 ```
 $ meteor create testmeteor
-helloworld: created.
+testmeteor: created.
 
 To run your new app:
    cd testmeteor
@@ -38,6 +38,7 @@ applications:
 ```
 
 * In .meteor folder, open the platforms file then remove the ios and android entries (if there exist)
+
 Run 
 ```
 cf push testmeteor -b https://github.com/bancha001/bluemix-buildpack-meteor1
