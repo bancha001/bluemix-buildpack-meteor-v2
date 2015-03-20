@@ -38,6 +38,8 @@ applications:
     - MongoLab-4d
   instances: 1
 ```
+* Create .cfignore to exclude the path 'local' to be uploaded
+.meteor/local
 
 * In testmeteor/.meteor folder, open the platforms file then remove the ios and android entries (if there exist)
 
