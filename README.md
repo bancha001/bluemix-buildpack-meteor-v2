@@ -41,8 +41,8 @@ applications:
 
 * In testmeteor/.meteor folder, open the platforms file then remove the ios and android entries (if there exist)
 
-* Run 
+* Under testmeter, Run 
 ```
-cf push testmeteor -b https://github.com/bancha001/bluemix-buildpack-meteor
+cf push
 
 ```
