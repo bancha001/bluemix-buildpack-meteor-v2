@@ -18,8 +18,6 @@ To run your new app:
 ```
 * Run and test the application in your local until all functions are stistisfied
 
-* Stop the application then delete the .meteor/local from testmeteor folder. Otherwise unneccessary files will be uploaded when you deploy it to bluemix and it will take longer time to upload.
-
 * Create Mongodb service in Bluemix dashboad. The service id will be use in the next step. 
 
 * Create manifest.yml and put it under the testmeteor folder.
