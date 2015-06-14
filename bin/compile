@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 
+echo 'Running as' whoami
+
 # Looking for ".meteor" directory
 if [ -d $1/".meteor" ]; then
   # ".meteor" directory found in main directory
