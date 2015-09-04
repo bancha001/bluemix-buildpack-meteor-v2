@@ -44,13 +44,6 @@ status "Building Meteor application"
 cd $APP_DIR && meteor build --directory $TEMP_DIR
 mv $TEMP_DIR"/bundle/"* $COMPILE_APP_DIR
 
-#
-# Install dependencies.
-#
-status "Installing dependencies"
-if [ -e $COMPILE_APP_DIR"/programs/server/package.json" ]; then
-  cd $COMPILE_APP_DIR"/programs/server" && (npm install | indent)
-fi
 
 #
 # Build runtime environment
