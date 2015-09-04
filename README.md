@@ -1,4 +1,4 @@
-# Heroku buildpack for Meteor
+# Bluemix buildpack for Meteor
 
 ## Supported version
 
@@ -6,70 +6,44 @@ This buildpack is dedicated for use with Meteor 1.0+.
 
 ## Usage
 
-You can watch [video](http://youtu.be/boeTv3527E0) showing how to use buildpack.
-
-First you have to create Meteor application
+* Create Meteor application
 
 ```
-$ meteor create helloworld
-helloworld: created.
+$ meteor create testmeteor
+testmeteor: created.
 
 To run your new app:
-   cd helloworld
+   cd testmeteor
    meteor
 ```
+* Run and test the application in your local until all functions are stistisfied
 
-Initialize git repository in application's directory.
+* Create Mongodb service in Bluemix dashboad. The service id will be use in the next step. 
 
+* Create manifest.yml and put it under the testmeteor folder.
+Here is the sample yml.
 ```
-$ cd helloworld
-$ git init
-Initialized empty Git repository in /tmp/a/helloworld/.git/
-$ git add .
-$ git commit -m "First commit"
+---
+applications:
+- memory: 1GB
+  domain: mybluemix.net
+  path: .
+  buildpack: https://github.com/bancha001/bluemix-buildpack-meteor
+  host: testmeteor
+  name: testmeteor
+  disk: 512M
+  services:
+    - MongoLab-4d
+  instances: 1
 ```
-
-Create Heroku application
-
+* Create .cfignore to exclude the path 'local' to be uploaded
 ```
-$ heroku create <unique_app_name> --stack cedar --buildpack https://github.com/jagi/heroku-buildpack-meteor.git
+.meteor/local
 ```
+* In testmeteor/.meteor folder, open the platforms file then remove the ios and android entries (if there exist)
 
-Set ROOT_URL variable
-
+* Under testmeter, Run 
 ```
-$ heroku config:set ROOT_URL=http://<unique_app_name>.herokuapp.com
-```
+cf push
 
-Add MongoHQ
-
-```
-$ heroku addons:add mongohq
-```
-
-Deploy application to Heroku server
-
-```
-$ git push heroku master
-```
-
-Enjoy!
-
-## Additional notes
-
-1. The `.meteor` directory doesn't have to be located in the root directory of the Git repository. This buildpack tries to find `.meteor` directory and use the first found location to build application. For instance, you can use following directories structure:
-```
-/.git/
-/.gitignore
-/web/.meteor
-/web/app.css
-/web/app.html
-/web/app.js
-/android/
-/ios/
-```
-
-2. If you want to deploy (`git push`) non `master` local branch to Heroku server use the following command:
-```
-$ git push heroku <local_branch_name>:master
 ```
