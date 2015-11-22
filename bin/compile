@@ -31,6 +31,18 @@ mkdir -p $COMPILE_BIN_DIR $COMPILE_APP_DIR
 source $BUILDPACK_DIR"/bin/common.sh"
 
 #
+# Install Node
+#
+status "Installing Node"
+#NODE_VERSION=$(curl -sS --get https://semver.io/node/resolve)
+NODE_URL="http://nodejs.org/dist/v0.10.36/node-v0.10.36-linux-x64.tar.gz"
+curl -sS $NODE_URL -o - | tar -zxf - -C $COMPILE_DIR --strip 1
+export npm_config_prefix=$COMPILE_DIR
+export CPATH=$CPATH:$COMPILE_DIR"/include"
+export CPPPATH=$CPATH
+export PATH=$PATH:$COMPILE_BIN_DIR
+
+#
 # Install Meteor
 #
 status "Installing Meteor"
@@ -44,6 +56,13 @@ status "Building Meteor application"
 cd $APP_DIR && meteor build --directory $TEMP_DIR
 mv $TEMP_DIR"/bundle/"* $COMPILE_APP_DIR
 
+#
+# Install dependencies.
+#
+status "Installing dependencies"
+if [ -e $COMPILE_APP_DIR"/programs/server/package.json" ]; then
+  cd $COMPILE_APP_DIR"/programs/server" && (npm install | indent)
+fi
 
 #
 # Build runtime environment
