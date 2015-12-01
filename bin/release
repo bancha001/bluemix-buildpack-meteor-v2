@@ -4,5 +4,5 @@ addons:
   - mongohq:sandbox
 config_vars:
 default_process_types:
-  web: .bluemix/bin/meteor
+  web: .bluemix/bin/node .bluemix/app/main.js
 YAML
